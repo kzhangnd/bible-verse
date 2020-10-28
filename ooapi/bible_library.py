@@ -1,6 +1,8 @@
 import json
+from os import path
 import numpy as np
 from sentence_transformers import SentenceTransformer, util
+from sklearn.metrics.pairwise import cosine_similarity
 
 
 class _bible_database:
@@ -12,8 +14,10 @@ class _bible_database:
         
         self.verse_label = []   # store the pos of the verse
         self.pos2label = {} # a dic containing pos -> label
+        self.cosine_scores_path = '../data/cosine_scores.npy'
+        self.cosine_scores = None
 
-    def load_bible(self, bible_file='../Psalms.json'):
+    def load_bible(self, bible_file='../data/Psalms.json'):
         with open(bible_file) as f:
             bible_data = json.load(f)
 
@@ -87,21 +91,24 @@ class _bible_database:
                 self.pos2label[(i, j)] = len(self.verse_label)
                 self.verse_label.append((i, j))
                 bible_text_flattened.append(self.bible_text[i][j])
-        
-        # extracting embeddings
-        model = SentenceTransformer('distilbert-base-nli-stsb-mean-tokens')
-        embeddings = model.encode(bible_text_flattened)
 
+        if not path.exists(self.cosine_scores_path): # if we have the file already
+            # extracting embeddings
+            model = SentenceTransformer('distilbert-base-nli-stsb-mean-tokens')
+            embeddings = model.encode(bible_text_flattened)
 
+            # calculate cosine similarity score
+            self.cosine_scores = cosine_similarity(embeddings)
+            np.save('../data/cosine_scores.npy', cosine_scores) # save the file for future use
 
-        
-
+        else:
+            self.cosine_scores = np.load(self.cosine_scores_path)
 
     # return the position a verse coordinate is in "my favorite"
     # if there is no such verse, return None
     def posInfav(self, cid, vid):
         try:
-            pos = self.favorite.index((cid, vid))
+            pos = self.favorite.index(self.pos2label[(cid, vid)])
         except ValueError:
             pos = None
         return pos
@@ -110,10 +117,13 @@ class _bible_database:
     # return all the verses in the "my favorite" (as a list)
     def get_favorites(self):
         result = []
-        for coordinate in self.favorite:
-            result.append([coordinate[0], coordinate[1], self.bible_text[coordinate[0]][coordinate[1]]])
-        result.reverse()
-        return result # the favorites are stored in the reverse order
+        for label in self.favorite:
+            cid = self.verse_label[label][0]
+            vid = self.verse_label[label][1]
+            result.append([cid, vid, self.bible_text[cid][vid]])
+        result.reverse() # the favorites are stored in the reverse order
+
+        return result 
 
 
     # add a verse to "my favorite" (adding its coordinate in bible)
@@ -125,7 +135,7 @@ class _bible_database:
             if self.posInfav(cid, vid) != None: # check if it is already in "my favorite"
                 r_code = 3
             else:
-                self.favorite.append((cid, vid))
+                self.favorite.append(self.pos2label[(cid, vid)])
 
         return r_code
 
@@ -167,8 +177,10 @@ if __name__ == "__main__":
 
     print(bdb.search_term('Flee as a bird'))
 
+    bdb.init_fav()
+
     print(bdb.add_favorite(143, 2))
 
     print(bdb.get_favorites())
 
-    bdb.init_fav()
+    
