@@ -1,4 +1,7 @@
 import json
+import numpy as np
+from sentence_transformers import SentenceTransformer, util
+
 
 class _bible_database:
 
@@ -6,6 +9,9 @@ class _bible_database:
         self.bible_text = []    # since we don't want to change the bible text, we use a list to store the bible text
         self.favorite = []      # we use list to store the pos of the my favorte in the order it is inserted
         self.bible_book_name = None
+        
+        self.verse_label = []   # store the pos of the verse
+        self.pos2label = {} # a dic containing pos -> label
 
     def load_bible(self, bible_file='../Psalms.json'):
         with open(bible_file) as f:
@@ -72,6 +78,24 @@ class _bible_database:
 
         return result
 
+    # initialize verse lables and pos mapping, get a flattened verse list and do embeddings extraction
+    def init_fav(self):
+        bible_text_flattened = []
+        # initialize verse label, pos2label, and flatten the verse
+        for i in range(len(self.bible_text)):
+            for j in range(len(self.bible_text[i])):
+                self.pos2label[(i, j)] = len(self.verse_label)
+                self.verse_label.append((i, j))
+                bible_text_flattened.append(self.bible_text[i][j])
+        
+        # extracting embeddings
+        model = SentenceTransformer('distilbert-base-nli-stsb-mean-tokens')
+        embeddings = model.encode(bible_text_flattened)
+
+
+
+        
+
 
     # return the position a verse coordinate is in "my favorite"
     # if there is no such verse, return None
@@ -126,24 +150,25 @@ class _bible_database:
         self.favorite = []
 
 if __name__ == "__main__":
-       bdb = _bible_database()
+    
+    bdb = _bible_database()
 
-       bdb.load_bible('../data/Psalms.json')
+    bdb.load_bible('../data/Psalms.json')
 
-       print(bdb.get_verse(0, 0))
+    print(bdb.get_verse(0, 0))
 
-       print(bdb.get_verse(0, 100))
+    print(bdb.get_verse(0, 100))
 
-       print(bdb.get_verse(100, 100))
+    print(bdb.get_verse(100, 100))
 
-       print(bdb.get_chapter(10))
+    print(bdb.get_chapter(10))
 
-       print(bdb.search_term('mountain'))
+    print(bdb.search_term('mountain'))
 
-       print(bdb.search_term('Flee as a bird'))
+    print(bdb.search_term('Flee as a bird'))
 
-       print(bdb.add_favorite(143, 2))
+    print(bdb.add_favorite(143, 2))
 
-       print(bdb.get_favorites())
+    print(bdb.get_favorites())
 
-
+    bdb.init_fav()
