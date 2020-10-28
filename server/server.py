@@ -36,7 +36,7 @@ def start_service():
     conf = {
 	'global': {
             'server.thread_pool': 5, # optional argument
-	    'server.socket_host': 'student04.cse.nd.edu', # 
+	    'server.socket_host': 'localhost', # 
 	    'server.socket_port': 51060, #change port number to your assigned
 	    },
 	'/': {
