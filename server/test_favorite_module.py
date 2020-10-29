@@ -7,6 +7,7 @@ class TestMovies(unittest.TestCase):
     SITE_URL = 'http://localhost:51060' # replace with your port number and 
     print("testing for server: " + SITE_URL)
     FAV_URL = SITE_URL + '/favorite/'
+    REC_URL = SITE_URL + '/recommendation/'
 
     def is_json(self, resp):
         try:
@@ -55,8 +56,22 @@ class TestMovies(unittest.TestCase):
         self.assertEqual(resp['result'], 'success')
         self.assertEqual(len(resp['favorite']), 1)
 
+    def test03_rec_get(self):
+        number = 20
+        r = requests.get(self.REC_URL + str(number))
+        self.assertTrue(self.is_json(r.content.decode('utf-8')))
+        resp = json.loads(r.content.decode('utf-8'))
+        self.assertEqual(resp['result'], 'success')
+        self.assertEqual(len(resp['recommendation']), 20)
 
-    def test03_index_delete(self):
+        number = 20000
+        r = requests.get(self.REC_URL + str(number))
+        self.assertTrue(self.is_json(r.content.decode('utf-8')))
+        resp = json.loads(r.content.decode('utf-8'))
+        self.assertEqual(resp['result'], 'error')
+        self.assertEqual(len(resp['recommendation']), 2460)
+
+    def test04_index_delete(self):
         # try an invalid input
         m = {}
         chapter_number = 144

@@ -8,6 +8,7 @@ from bookController import BookController
 from chapterController import ChapterController
 from verseController import VerseController
 from favController import FavController
+from recController import RecController
 from bible_library import _bible_database
 
 
@@ -20,6 +21,7 @@ def start_service():
     chapterController = ChapterController(bdb=bdb)
     verseController =   VerseController(bdb=bdb)
     favController =     FavController(bdb=bdb)
+    recController =     RecController(bdb=bdb)
 
     dispatcher.connect('book_get', '/book/', controller=bookController, action = 'GET_INDEX', conditions=dict(method=['GET']))
     dispatcher.connect('book_search_term', '/book/:term', controller=bookController, action = 'GET_KEY', conditions=dict(method=['GET']))
@@ -32,6 +34,8 @@ def start_service():
     dispatcher.connect('fav_index_get', '/favorite/', controller=favController, action = 'GET_INDEX', conditions=dict(method=['GET']))
     dispatcher.connect('fav_index_post', '/favorite/', controller=favController, action = 'POST_INDEX', conditions=dict(method=['POST']))
     dispatcher.connect('fav_index_delete', '/favorite/', controller=favController, action = 'DELETE_INDEX', conditions=dict(method=['DELETE']))
+
+    dispatcher.connect('recommendation_get', '/recommendation/:number', controller=recController, action = 'GET_KEY', conditions=dict(method=['GET']))
 
     conf = {
 	'global': {

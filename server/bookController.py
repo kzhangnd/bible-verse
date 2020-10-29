@@ -11,6 +11,7 @@ class BookController(object):
             self.bdb = bdb
 
         self.bdb.load_bible('../data/Psalms.json')
+        self.bdb.init_fav()     # initialize "my favorite"
 
     # when GET request for /book/ comes in, we respond with a list of the whole book
     def GET_INDEX(self):
