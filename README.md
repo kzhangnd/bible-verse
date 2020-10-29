@@ -7,7 +7,7 @@ The bible_library.py contians basically all the functions Controllers need. It i
 All Controller files and the server.py import bible_library.py. 
 
 To run the test for bible_library.py, run the following command in the ooapi folder:
-```
+```bash
 python3 test_api.py
 ``` 
 
@@ -24,11 +24,12 @@ The following is the JSON Specification for our server:
 | POST         | /favorite/								| {'chapter number': 144, 'verse number': 4} | {“result”: “success”} if operation worked		|
 | DELETE       | /favorite/								| {}      									 | {“result”: “success”} if operation worked		|
 | DELETE       | /favorite/:chapter_number_verse_number | {}      									 | {“result”: “success”} if operation worked		|
+| GET          | /recommendation/:number				| No body 									 | string formatted json of the recommendations		|
 
 ## Server
 Our server currently uses:
-	* host: 'student04.cse.nd.edu'
-	* port: 51060
+* host: localhost
+* port: 51060
  
 [Final Project]: https://docs.google.com/document/d/15YQbpM2lFVR3J5dg1RQ0uKpSqXaUg0zSrnoFMKk1HKc/edit
 [CSE 30332 Programming Paradigms]: https://www3.nd.edu/~skumar5/teaching/2020-fall-pp.html
