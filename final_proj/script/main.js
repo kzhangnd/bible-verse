@@ -20,7 +20,7 @@ function search_request(){
     console.log('search_request');
     var requester        = new XMLHttpRequest(); // 1 - creating request object // the thing that does the requesting
     requester.responseType= "json";
-    var total_url = "http://student10.cse.nd.edu:" + 51026;
+    var total_url = "http://student04.cse.nd.edu:" + 51026;
     //Print whole entire Psalm
     if(!chapter.value && !verse.value && !keyword.value){// and search is clicked
         //alert("inside book");
