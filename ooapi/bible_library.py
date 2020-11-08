@@ -4,7 +4,7 @@ import numpy as np
 from tqdm import tqdm
 from sentence_transformers import SentenceTransformer, util
 from sklearn.metrics.pairwise import cosine_similarity
-
+from fuzzysearch import find_near_matches
 
 class _bible_database:
 
@@ -19,6 +19,7 @@ class _bible_database:
         self.cosine_scores_path = '../data/cosine_scores.npy'
         self.cosine_scores = None
         self.similarity = []
+        self.bible_text_flattened = []
 
     def load_bible(self, bible_file='../data/Psalms.json'):
         with open(bible_file) as f:
@@ -76,32 +77,47 @@ class _bible_database:
     def search_term(self, search_term):
         search_term = search_term.strip().lower()   # convert to lower and remove the trailing spaces
         result = []
-        for cid in range(len(self.bible_text)):
-            curr_chapter = self.bible_text[cid]
-            for vid in range(len(curr_chapter)):
-                curr_verse = curr_chapter[vid]
-                if search_term in curr_verse.lower():
-                    result.append([cid, vid, curr_verse])
+        for label in range(self.total):
+            curr_verse = self.bible_text_flattened[label]
+            if search_term in curr_verse.lower():
+                cid = self.verse_label[label][0]
+                vid = self.verse_label[label][1]
+                result.append([cid, vid, curr_verse])
 
         return result
 
+
+    # search the term among the verse (generally) using fuzzysearch
+    def fuzzy_search_term_general(self, search_term):
+        search_term = search_term.strip().lower()   # convert to lower and remove the trailing spaces
+        result = []
+        for label in range(self.total):
+            curr_verse = self.bible_text_flattened[label]
+            r = find_near_matches(search_term, curr_verse.lower(), max_l_dist=1) # allow dis 1
+            if r != []:
+                cid = self.verse_label[label][0]
+                vid = self.verse_label[label][1]
+                result.append([cid, vid, curr_verse])
+        
+        return result
+
+
     # initialize verse lables and pos mapping, get a flattened verse list and do embeddings extraction
     def init_fav(self):
-        bible_text_flattened = []
         # initialize verse label, pos2label, and flatten the verse
         for i in range(len(self.bible_text)):
             for j in range(len(self.bible_text[i])):
                 self.pos2label[(i, j)] = len(self.verse_label)
                 self.verse_label.append((i, j))
-                bible_text_flattened.append(self.bible_text[i][j])
+                self.bible_text_flattened.append(self.bible_text[i][j])
 
-        self.total = len(bible_text_flattened)
+        self.total = len(self.bible_text_flattened)
 
         if not path.exists(self.cosine_scores_path): # if we have the file already
             # extracting embeddings
             model = SentenceTransformer('distilbert-base-nli-stsb-mean-tokens')
             print("Extracting Embeddings ...")
-            embeddings = model.encode(bible_text_flattened)
+            embeddings = model.encode(self.bible_text_flattened)
 
             # calculate cosine similarity score
             print("Calculating Cosine Similarity Scores ...")
@@ -193,12 +209,10 @@ class _bible_database:
         i = 0
         while len(result_set) < N:
             curr_label = curr[i][0]
-            print(curr_label)
             if curr_label not in result_set:
                 result_set.add(curr_label)
                 cid = self.verse_label[curr_label][0]
                 vid = self.verse_label[curr_label][1]
-                print(f"cid: {cid}, vid: {vid}")
                 result.append([cid, vid, self.bible_text[cid][vid]])
             i += 1
             if i == len(curr):
@@ -211,6 +225,7 @@ if __name__ == "__main__":
     bdb = _bible_database()
 
     bdb.load_bible('../data/Psalms.json')
+    bdb.init_fav()
     '''
     print(bdb.get_verse(0, 0))
 
@@ -219,17 +234,16 @@ if __name__ == "__main__":
     print(bdb.get_verse(100, 100))
 
     print(bdb.get_chapter(10))
-
+    '''
     print(bdb.search_term('mountain'))
 
-    print(bdb.search_term('Flee as a bird'))
-    '''
+    #print(bdb.fuzzy_search_term_general('fuck'))
+    
+    
 
-    bdb.init_fav()
+    #print(bdb.add_favorite(143, 2))
+    #print(bdb.add_favorite(142, 2))
 
-    print(bdb.add_favorite(143, 2))
-    print(bdb.add_favorite(142, 2))
+    #print(bdb.get_favorites())
 
-    print(bdb.get_favorites())
-
-    print(bdb.get_recommendation())
+    #print(bdb.get_recommendation())
