@@ -40,12 +40,12 @@ class TestMovies(unittest.TestCase):
         self.assertEqual(resp['search_result'][0][2], 'In the LORD put I my trust: how say ye to my soul, Flee as a bird to your mountain?')
         self.assertEqual(resp['result_number'], 1)
 
-        term = 'f*ck'
+        term = 'fuck'
         r = requests.get(self.BOOK_URL + term)
         self.assertTrue(self.is_json(r.content.decode('utf-8')))
         resp = json.loads(r.content.decode('utf-8'))
         self.assertEqual(resp['result'], 'success')
-        self.assertEqual(resp['result_number'], 0)
+        self.assertEqual(resp['result_number'], 10)
 
     def test_chapter_get(self):
         chapter_number = 144

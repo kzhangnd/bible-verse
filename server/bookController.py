@@ -31,6 +31,8 @@ class BookController(object):
 
         try:
             search_result = self.bdb.search_term(term)
+            if search_result == []: # if there is no result using regular search, we use fuzzy search
+                search_result = self.bdb.fuzzy_search_term(term)
             number = len(search_result)
             output['search_result'] = search_result
             output['result_number'] = number

@@ -87,8 +87,8 @@ class _bible_database:
         return result
 
 
-    # search the term among the verse (generally) using fuzzysearch
-    def fuzzy_search_term_general(self, search_term):
+    # search the term among the verse using fuzzysearch
+    def fuzzy_search_term(self, search_term):
         search_term = search_term.strip().lower()   # convert to lower and remove the trailing spaces
         result = []
         for label in range(self.total):
@@ -237,7 +237,7 @@ if __name__ == "__main__":
     '''
     print(bdb.search_term('mountain'))
 
-    #print(bdb.fuzzy_search_term_general('fuck'))
+    print(bdb.fuzzy_search_term('fuck'))
     
     
 
