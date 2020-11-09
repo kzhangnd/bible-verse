@@ -45,14 +45,20 @@ def start_service():
     dispatcher.connect('fav_index_delete', '/favorite/', controller=favController, action = 'DELETE_INDEX', conditions=dict(method=['DELETE']))
 
     dispatcher.connect('recommendation_get', '/recommendation/:number', controller=recController, action = 'GET_KEY', conditions=dict(method=['GET']))
+    
     #CORS related options connections
     dispatcher.connect('book_get_options', '/book/', controller=optionsController, action = 'OPTIONS', conditions=dict(method=['OPTIONS']))
-
     dispatcher.connect('book_search_term_options', '/book/:term', controller=optionsController, action = 'OPTIONS', conditions=dict(method=['OPTIONS']))
+
     dispatcher.connect('chapter_get_options', '/chapter/:chapter_number', controller=optionsController, action = 'OPTIONS', conditions=dict(method=['OPTIONS']))
+
     dispatcher.connect('verse_get_options', '/verse/:chapter_number_verse_number', controller=optionsController, action = 'OPTIONS', conditions=dict(method=['OPTIONS']))
-    dispatcher.connect('fav_delete_options', 'favorite/:chapter_number_verse_number', controller=optionsController, action = 'OPTIONS', conditions=dict(method=['OPTIONS']))
+    
+    dispatcher.connect('fav_delete_options', '/favorite/:chapter_number_verse_number', controller=optionsController, action = 'OPTIONS', conditions=dict(method=['OPTIONS']))
     dispatcher.connect('fav_index_get_options', '/favorite/', controller=optionsController, action = 'OPTIONS', conditions=dict(method=['OPTIONS']))
+    dispatcher.connect('fav_index_post_options', '/favorite/', controller=optionsController, action = 'OPTIONS', conditions=dict(method=['OPTIONS']))
+    dispatcher.connect('fav_index_delete_options', '/favorite/', controller=optionsController, action = 'OPTIONS', conditions=dict(method=['OPTIONS']))
+    
     dispatcher.connect('recommedation_get_options', '/recommendation/:number', controller=optionsController, action = 'OPTIONS', conditions=dict(method=['OPTIONS']))
 
         
@@ -60,8 +66,8 @@ def start_service():
     conf = {
 	'global': {
             'server.thread_pool': 5, # optional argument
-	    'server.socket_host': 'student10.cse.nd.edu', # 
-	    'server.socket_port': 51026, #change port number to your assigned
+	    'server.socket_host': 'localhost', # 
+	    'server.socket_port': 51060, #change port number to your assigned
 	    },
 	'/': {
 	    'request.dispatch': dispatcher,
