@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body >
+
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">ccolon2</a></li>
+                    <li><a href="#">kzhang4</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1> My Favorites</h1>
+
+
+        <p></p>
+
+
+        <!-- <form class="bsr-form " action=""> -->
+
+            <div class="form-group">
+                <label id="label-enter" for="tex-input">Enter Chapter Number</label>
+                <input name="text-input" type="text" class="form-control" id="input-chapter-number">
+            </div>
+
+
+            <div class="form-group">
+                <label for="tex-input">Enter Verse Number</label>
+                <input name="text-input" type="text" class="form-control" id="input-verse-number">
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary" id="add-button">Add to "My Favorites"</button>
+                <button type="submit" class="btn btn-primary" id="delete-button">Delete from "My Favorites"</button>
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Clear all in "My Favorites"</button>
+                <button type="submit" class="btn btn-primary" id="rec-button">Recommendation for You</button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Clear "My Favorites"</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Are you sure you want to PERMANENTLY CLEAR ALL VERSES in "My Favorites"</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary" id="clear-button">Clear all verses</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- </form> -->
+
+        <div class="col-md-9">
+            <div>
+                <label id="response-label">My Favorites:</label>
+            </div>
+            <div class="col" style="background-color:white;">
+                <label id="answer-label">-</label>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <label id="response-label">You Might Also Like:</label>
+            <div class="col" style="background-color:white;">
+                <label id="recommendation-label">-</label>
+            </div>
+        </div>
+
+        
+    </div>
+
+    <script src="script/fav.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>
