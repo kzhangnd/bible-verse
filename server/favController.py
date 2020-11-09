@@ -20,7 +20,7 @@ class FavController(object):
 
         return json.dumps(output)
 
-    # when POST for /movies/ comes in, we take chapter_number and verse_number from body of request, and respond
+    # when POST for /favorite/ comes in, we take chapter_number and verse_number from body of request, and respond
     def POST_INDEX(self):
         # check input validity
         output = {'result': 'success'}
