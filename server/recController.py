@@ -11,7 +11,11 @@ class RecController(object):
 
     # when GET request for /recommendation/ comes in, then we repsond with json string
     def GET_KEY(self, number):
-        number = int(number)
+        try:
+            number = int(number)
+        except Exception as ex:
+            return json.dumps({'result': 'error', 'message': 'invalid input'})
+            
         output = {'result': 'success'}
         try:
             output['recommendation'] = self.bdb.get_recommendation(number)
