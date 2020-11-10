@@ -42,7 +42,7 @@ Also, if the user inputs invalid chapter numbers of verse numbers, then they wil
 **Add to "My Favorites":**
     The user can type in a chapter number and verse number and add a verse to the bottom textbox by clicking the "Add to MyFavorites" button. 
     
-_    Test Case: 
+    Test Case: 
         1.Click MyFavorites button from home page.
         2.Type Chapter Number "1" into "Enter Chapter Number" textbox.
         3. Type Verse Number "1" into "Enter Verse Number" textbox.
