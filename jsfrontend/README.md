@@ -12,7 +12,7 @@
 
 **Search by Verse Number:**
     By typing in a particular chapter number and verse number into their separate input boxes, the user may view the results of a particular verse   upon clicking the "Search" button.
-   ** 
+   
     Test Case:
         1.Enter "1" into the "Enter Chapter Number" input box.
         2.Enter "2" into the "Enter Verse Number" input box.
