@@ -13,7 +13,7 @@ Also, if the user inputs invalid chapter numbers of verse numbers, then they wil
 
 
 **Search by Keyword:**
-    The user can type in a particular keyword and upon clicking the "Search" button, will be able to view all the verses that have that keyword in it. We also have implemented a "fuzzy search" feature. This means that if a user attempts to search for a particular keyword that is not within the book of Psalms, similar results will still pop up.  For example, the word "aladdin" would likely not be in the book of Psalms, but you could search by it and find verses with words that have a similar spellings.
+    The user can type in a particular keyword and upon clicking the "Search" button, will be able to view all the verses that have that keyword in it. We also have implemented a "fuzzy search" feature. This means that if a user attempts to search for a particular keyword that is not within the book of Psalms, similar results will still pop up.  For example, the word "aladdin" would likely not be in the book of Psalms, but you could search by it and find verses with words that have similar spellings.
 
 
 **My Favorites:**
