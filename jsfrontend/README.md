@@ -1,4 +1,4 @@
-## User Interaction 
+## User Interaction Guide
 
 **Search by Chapter Number:**
     By typing in a chapter number into the first input box, the user can view the content of a particular chapter in the book of Psalms.
