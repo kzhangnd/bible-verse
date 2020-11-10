@@ -4,7 +4,7 @@
     By typing in a chapter number into the first input box, the user can view the content of a particular chapter in the book of Psalms.
     After entering a chapter number, the user can click the "Search" button to view results in the textbox at the bottom of the page.
 
-  Test Case:
+    Test Case:
         1.Enter "1" into the "Enter Chapter Number" input box.
         2.Click Search button.
 
