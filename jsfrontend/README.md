@@ -20,7 +20,7 @@ Also, if the user inputs invalid chapter numbers of verse numbers, then they wil
     Located in the top right hand corner, the My Favorites button takes the user to a page in which they can add there favorites verses to a textbox located at the bottom of the page. 
 
 **Add to "My Favorites":**
-    The user can type in a chapter number and verse number and add a verse to the bottom textbox by clicking the "Add to MyFavorites" button. De
+    The user can type in a chapter number and verse number and add a verse to the bottom textbox by clicking the "Add to MyFavorites" button. 
 
 **Delete from "My Favorites":**
     The user can delete a verse from their favorite verse section by typing in the chapter number and verse number and clicking "Delete from "My Favorites".
