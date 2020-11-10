@@ -53,7 +53,7 @@ Also, if the user inputs invalid chapter numbers of verse numbers, then they wil
 
 **Delete from "My Favorites":**
     The user can delete a verse from their favorite verse section by typing in the chapter number and verse number and clicking "Delete from "My Favorites".
- **  
+ 
     Test Case: 
         1.Click MyFavorites button from home page.
         2.Type Chapter Number "1" into "Enter Chapter Number" textbox.
