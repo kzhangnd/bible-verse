@@ -4,9 +4,9 @@
     By typing in a chapter number into the first input box, the user can view the content of a particular chapter in the book of Psalms.
     After entering a chapter number, the user can click the "Search" button to view results in the textbox at the bottom of the page.
 
-**  Test Case:
+  Test Case:
         1.Enter "1" into the "Enter Chapter Number" input box.
-        2.Click Search button.**
+        2.Click Search button.
 
 
 
@@ -26,11 +26,12 @@ Also, if the user inputs invalid chapter numbers of verse numbers, then they wil
 
 **Search by Keyword:**
     The user can type in a particular keyword and upon clicking the "Search" button, will be able to view all the verses that have that keyword in it. We also have implemented a "fuzzy search" feature. This means that if a user attempts to search for a particular keyword that is not within the book of Psalms, similar results will still pop up.  For example, the word "aladdin" would likely not be in the book of Psalms, but you could search by it and find verses with words that have similar spellings.
-   ** Test Case:
+    
+    Test Case:
         1.Enter "rod" into the "Enter a Keyword to Search by:" input box.
         2.Click Search button.
         3.Enter "aladdin" "Enter a Keyword to Search by:" input box.
-        4.Click Search button.**
+        4.Click Search button.
 
 
 
@@ -45,19 +46,19 @@ _    Test Case:
         1.Click MyFavorites button from home page.
         2.Type Chapter Number "1" into "Enter Chapter Number" textbox.
         3. Type Verse Number "1" into "Enter Verse Number" textbox.
-        4. Click add to "My Favorites" button._
+        4. Click add to "My Favorites" button.
 
 
 
 
 **Delete from "My Favorites":**
     The user can delete a verse from their favorite verse section by typing in the chapter number and verse number and clicking "Delete from "My Favorites".
- **       
-**   Test Case: 
+ **  
+    Test Case: 
         1.Click MyFavorites button from home page.
         2.Type Chapter Number "1" into "Enter Chapter Number" textbox.
         3. Type Verse Number "1" into "Enter Verse Number" textbox.
-        4. Click "Delete from My Favorites" button.****
+        4. Click "Delete from My Favorites" button.
 
 
 
