@@ -8,7 +8,7 @@ var verse           = document.getElementById("input-verse");
 //Perform Action Upon Click
 
 search_button.onmouseup  = search_request;
-// rec_button.onmouseup     = rec_request;
+
 
 //Search Button Functionality
 function search_request(){
@@ -90,47 +90,6 @@ function search_request(){
     requester.send(null); //this actually makes the network call
 
 }
-//rec_request button
-/*function rec_request(){
-      console.log('recommedations');
-      var req = new XMLHttpRequest();
-      var total_url = "http://student00.cse.nd.edu:" + 51026 + "/recommendation/:";
-      if (verse.value && chapter.value){
-          total_url = total_url + verse.value;
-          requester.open("GET", total_url, true);
-
-      }
-      // set up onload
-      console.log("before xh.onload() in search_request");
-
-      requester.onload = function(e) { // triggered when response is received
-          var resp = document.getElementById("answer-label");
-
-          //don't really get this
-          resp.innerHTML  = requester.responseText
 
 
 
-          console.log("entered on.load()");
-          //console.log(requester.responseText + "reponse from ageApi");
-
-
-      }//end of onload
-
-      requester.onerror = function(e) {
-          console.error(requester.statusText)
-      }//end of onerror
-      var message_textbox = document.getElementById("text-message-body");
-
-      if (document.getElementById("checkbox-use-message").checked) {
-          console.log("message on");
-          console.log(message_textbox.value);
-          requester.send(message_textbox.value); //this actually makes the network call
-      }
-      else {
-          console.log("message off");
-          requester.send(null); //this actually makes the network call
-      }
-
-
-}*/
