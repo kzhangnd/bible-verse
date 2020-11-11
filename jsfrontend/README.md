@@ -2,7 +2,7 @@
 
 **Search by Chapter Number:**
     By typing in a chapter number into the first input box, the user can view the content of a particular chapter in the book of Psalms.
-    After entering a chapter number, the user can click the "Search" button to view results in the textbox at the bottom of the page. Results can also be viewed using a scroll bar.
+    After entering a chapter number, the user can click the "Go To" button to view results in the textbox at the bottom of the page. Results can also be viewed using a scroll bar.
 
     Test Case:
         1.Enter "1" into the "Enter Chapter Number" input box.
@@ -25,7 +25,7 @@ Also, if the user inputs invalid chapter numbers of verse numbers, then they wil
 
 
 **Search by Keyword:**
-    The user can type in a particular keyword and upon clicking the "Search" button, will be able to view all the verses that have that keyword in it. We also have implemented a "fuzzy search" feature. This means that if a user attempts to search for a particular keyword that is not within the book of Psalms, similar results will still pop up.  For example, the word "aladdin" would likely not be in the book of Psalms, but you could search by it and find verses with words that have similar spellings.
+    The user can type in a particular keyword and upon clicking the "Go To" button, will be able to view all the verses that have that keyword in it. We also have implemented a "fuzzy search" feature. This means that if a user attempts to search for a particular keyword that is not within the book of Psalms, similar results will still pop up.  For example, the word "aladdin" would likely not be in the book of Psalms, but you could search by it and find verses with words that have similar spellings.
     
     Test Case:
         1.Enter "rod" into the "Enter a Keyword to Search by:" input box.
