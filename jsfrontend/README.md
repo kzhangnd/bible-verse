@@ -2,7 +2,7 @@
 
 **Search by Chapter Number:**
     By typing in a chapter number into the first input box, the user can view the content of a particular chapter in the book of Psalms.
-    After entering a chapter number, the user can click the "Search" button to view results in the textbox at the bottom of the page.
+    After entering a chapter number, the user can click the "Search" button to view results in the textbox at the bottom of the page. Results can also be viewed using a scroll bar.
 
     Test Case:
         1.Enter "1" into the "Enter Chapter Number" input box.
@@ -40,7 +40,7 @@ Also, if the user inputs invalid chapter numbers of verse numbers, then they wil
     Located in the top right hand corner, the My Favorites button takes the user to a page in which they can add there favorites verses to a textbox located at the bottom of the page. 
 
 **Add to "My Favorites":**
-    The user can type in a chapter number and verse number and add a verse to the bottom textbox by clicking the "Add to MyFavorites" button. 
+    The user can type in a chapter number and verse number and add a verse to the bottom textbox by clicking the "Add to MyFavorites" button. The results of adding a favorite can be viewed at the bottom of the page. The user can also use a scroll bar to view the results.
     
     Test Case: 
         1.Click MyFavorites button from home page.
@@ -58,7 +58,7 @@ Also, if the user inputs invalid chapter numbers of verse numbers, then they wil
         1.Click MyFavorites button from home page.
         2.Type Chapter Number "1" into "Enter Chapter Number" textbox.
         3. Type Verse Number "1" into "Enter Verse Number" textbox.
-        4. Click "Delete from My Favorites" button.
+        4. Click "Delete from My Favorites" button. Alternatively, the user may click an "X" button beside each verse to delete the verse.
 
 
 
