@@ -68,9 +68,9 @@ Also, if the user inputs invalid chapter numbers of verse numbers, then they wil
 **Recommendation for You:**
     If the user has verses inside of the "My Favorites" section, then they can click the "Recommedation for You" button to view a list of recommended verses, which are similar to the verses located in their "My Favorites" section. If the user adds more verses to their favorites, then this recommendation list can be updated by clicking the "Recommendation for You" button again. Results should appear in the "You Might Also Like:" text box.
 
-*Email:**
+**Email:**
     The user can send either of us an email by clicking on our netids in the top right hand corner.
- Test Case: 
+    Test Case: 
        1. Click on ccolon2 in top right hand corner.
        2.Type in email you want to send and send it.
 
