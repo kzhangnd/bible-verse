@@ -20,7 +20,7 @@
 
 
 
-If the user does not input a chapter number or a verse number and clicks the "Search" button, then the results will be the entire book of Psalm. 
+If the user does not input a chapter number or a verse number and clicks the "Go To" button, then the results will be the entire book of Psalm. 
 Also, if the user inputs invalid chapter numbers of verse numbers, then they will receive an alert message.
 
 
