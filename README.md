@@ -103,6 +103,8 @@ Also, if the user inputs invalid chapter numbers of verse numbers, then they wil
 
 **Email:**
     The user can send either of us an email by clicking on our netids in the top right hand corner.
+
+## Complexity
     
     Test Case: 
        1. Click on ccolon2 in top right hand corner.
