@@ -4,79 +4,89 @@
     <meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    
+    
 
 </head>
 
 <body >
 
-    <nav class="navbar navbar-default">
-        <div class="container">
-            <div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Psalms</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="fav.html">My Favorites</a>
+            </div>
+        </div>
 
-            </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-left">
-                    <li><a href="#">ccolon2</a></li>
-                    <li><a href="#">kzhang4</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <button onclick="location.href='fav.html'" type="button" class="btn btn-primary">
-                My Favorite</button>
-                </ul>
-            </div>
+        <div class="navbar-text navbar-right">
+            <a href="mailto:ccolon2@nd.edu">ccolon2&nbsp;&nbsp;&nbsp;</a>
+            <a href="mailto:kzhang4@nd.edu">kzhang4</a>
         </div>
     </nav>
 
     <div class="container">
         <h1> The Book of Psalms</h1>
-
-
+        
         <p></p>
 
-
-        <!-- <form class="bsr-form " action=""> -->
-
-            <div class="form-group">
-                <label id="label-enter" for="tex-input">Enter Chapter Number</label>
-                <input name="text-input" type="text" class="form-control" id="input-chapter-number">
-            </div>
-
-
-            <div class="form-group">
-                <label for="tex-input">Enter Verse Number</label>
-                <input name="text-input" type="text" class="form-control" id="input-verse">
-            </div>
-            <div class="form-group">
-                <label for="tex-input">Enter a Keyword to Search by</label>
-                <input name="text-input" type="text" class="form-control" id="input-keyword">
-            </div>
-
-            <div class="form-group">
-
-
-            
-                <button type="submit" class="btn btn-primary" id="search-button">Search</button>
-
-                
-
-            </div>
-        <!-- </form> -->
-        <div>
-            <label id="response-label">Result:</label>
+        <div class="col-md-4 offset-md-4 mt-5 border border-success pt-3">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Search by keyword..." id="input-keyword">
+          <div class="input-group-append">
+            <span class="input-group-text"><button type="button" class="btn btn-info wrn-btn" id="search-button"><i class="fa fa-search"></i></span>
+          </div>
+          </div>
         </div>
+        
+        <p></p>
 
-        <div style="background-color:white;">
-            <label id="answer-label">-</label>
+        <!-- goto bar -->
+        <section class="search-sec">
+            <div class="container">
+                <form action="#" method="post" novalidate="novalidate">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-3 col-sm-12 p-0">
+                                     <input type="text" class="form-control search-slt" placeholder="Enter Chapter Number" id="input-chapter-number">
+                                </div>
+                                <div class="col-lg-4 col-md-3 col-sm-12 p-0">
+                                     <input type="text" class="form-control search-slt" placeholder="Enter Verse Number" id="input-verse-number">
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                                    <button type="button" class="btn btn-success wrn-btn" id="goto-button">Go To</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+        
+        <!-- result-->
+        <div class="card mb-4">
+            <div class="card-body p-5">
+                <h4 class="mb-4">Result</h4>
+                <div class="custom-scrollbar-css p-2">
+                    <label id="answer-label"></label>
+                </div>
+            </div>
         </div>
 
     </div>
 
     <script src="script/main.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

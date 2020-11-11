@@ -4,27 +4,30 @@
     <meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="style_f.css">
 
 </head>
 
 <body >
 
-    <nav class="navbar navbar-default">
-        <div class="container">
-            <div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Psalms</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="index.html">Home</a>
+            <a class="nav-item nav-link" href="#">My Favorites <span class="sr-only">(current)</span></a>
             </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">ccolon2</a></li>
-                    <li><a href="#">kzhang4</a></li>
+        </div>
 
-                </ul>
-            </div>
+        <div class="navbar-text navbar-right">
+            <a href="mailto:ccolon2@nd.edu">ccolon2&nbsp;&nbsp;&nbsp;</a>
+            <a href="mailto:kzhang4@nd.edu">kzhang4</a>
         </div>
     </nav>
 
@@ -37,68 +40,79 @@
 
         <!-- <form class="bsr-form " action=""> -->
 
-            <div class="form-group">
-                <label id="label-enter" for="tex-input">Enter Chapter Number</label>
-                <input name="text-input" type="text" class="form-control" id="input-chapter-number">
-            </div>
+        <div class="form-group">
+            <label id="label-enter" for="tex-input">Enter Chapter Number</label>
+            <input name="text-input" type="text" class="form-control" id="input-chapter-number">
+        </div>
 
 
-            <div class="form-group">
-                <label for="tex-input">Enter Verse Number</label>
-                <input name="text-input" type="text" class="form-control" id="input-verse-number">
-            </div>
+        <div class="form-group">
+            <label for="tex-input">Enter Verse Number</label>
+            <input name="text-input" type="text" class="form-control" id="input-verse-number">
+        </div>
 
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary" id="add-button">Add to "My Favorites"</button>
-                <button type="submit" class="btn btn-primary" id="delete-button">Delete from "My Favorites"</button>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" id="add-button">Add to "My Favorites"</button>
+            <button type="submit" class="btn btn-primary" id="delete-button">Delete from "My Favorites"</button>
 
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Clear all in "My Favorites"</button>
-                <button type="submit" class="btn btn-primary" id="rec-button">Recommendation for You</button>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Clear all in "My Favorites"</button>
+            <button type="submit" class="btn btn-primary" id="rec-button">Recommendation for You</button>
 
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Clear "My Favorites"</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <p>Are you sure you want to PERMANENTLY CLEAR ALL VERSES in "My Favorites"</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary" id="clear-button">Clear all verses</button>
-                            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Clear "My Favorites"</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you want to PERMANENTLY CLEAR ALL VERSES in "My Favorites"</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" id="clear-button">Clear all verses</button>
                         </div>
                     </div>
                 </div>
             </div>
+
+
+
+            </div>
         <!-- </form> -->
 
+        <div class="row">
         <div class="col-md-9">
             <div>
                 <label id="response-label">My Favorites:</label>
-            </div>
-            <div class="col" style="background-color:white;">
-                <label id="answer-label">-</label>
+                <div class="nav nav-pills nav-stacked my_favorite">
+                    <ul style="margin-top: 0.5em;" id="result">
+            
+                    </ul>
+                </div>
+                <ul id="result">
+            
+                </ul>
             </div>
         </div>
         <div class="col-md-3">
             <label id="response-label">You Might Also Like:</label>
-            <div class="col" style="background-color:white;">
+            <div class="nav nav-pills nav-stacked also_like">
                 <label id="recommendation-label">-</label>
             </div>
+        </div>
         </div>
 
         
     </div>
 
     <script src="script/fav.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
