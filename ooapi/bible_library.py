@@ -2,6 +2,7 @@ import json
 from os import path
 import numpy as np
 from tqdm import tqdm
+import pickle
 from sentence_transformers import SentenceTransformer, util
 from sklearn.metrics.pairwise import cosine_similarity
 from fuzzysearch import find_near_matches
@@ -18,6 +19,7 @@ class _bible_database:
         self.pos2label = {} # a dic containing pos -> label
         self.cosine_scores_path = '../data/cosine_scores.npy'
         self.cosine_scores = None
+        self.similarity_path = '../data/similarity_matrix.pickle'
         self.similarity = []
         self.bible_text_flattened = []
 
@@ -113,29 +115,42 @@ class _bible_database:
 
         self.total = len(self.bible_text_flattened)
 
-        if not path.exists(self.cosine_scores_path): # if we have the file already
-            # extracting embeddings
-            model = SentenceTransformer('distilbert-base-nli-stsb-mean-tokens')
-            print("Extracting Embeddings ...")
-            embeddings = model.encode(self.bible_text_flattened)
+        if not path.exists(self.similarity_path): # if we don't have the similarity matrix file
 
-            # calculate cosine similarity score
-            print("Calculating Cosine Similarity Scores ...")
-            self.cosine_scores = cosine_similarity(embeddings)
+            if not path.exists(self.cosine_scores_path): # if we don't have the cosine score file already
+                # extracting embeddings
+                model = SentenceTransformer('distilbert-base-nli-stsb-mean-tokens')
+                print("Extracting Embeddings ...")
+                embeddings = model.encode(self.bible_text_flattened)
 
-            np.save('../data/cosine_scores.npy', cosine_scores) # save the file for future use
-            print(f"Numpy File Saved at {self.cosine_scores_path}")
+                # calculate cosine similarity score
+                print("Calculating Cosine Similarity Scores ...")
+                self.cosine_scores = cosine_similarity(embeddings)
+
+                np.save('../data/cosine_scores.npy', cosine_scores) # save the file for future use
+                print(f"Numpy File Saved at {self.cosine_scores_path}")
+
+            else:
+                print(f"Loading {self.cosine_scores_path}...")
+                self.cosine_scores = np.load(self.cosine_scores_path)
+
+            # get similarity matrix
+            print("Calculating Similarity Matrix ...")
+            for x in tqdm(self.cosine_scores):
+                x_label = x.argsort()[::-1]
+                x_info = [[l, x[l]] for l in x_label]
+                self.similarity.append(x_info[1:])  # we don't want the first one, as it is authentic pair
+
+            file_to_store = open(self.similarity_path, "wb")
+            pickle.dump(self.similarity, file_to_store)
+            file_to_store.close()
+            print(f"Similarity Matrix Saved at {self.similarity_path}")
 
         else:
-            self.cosine_scores = np.load(self.cosine_scores_path)
-
-        # get similarity matrix
-        print("Calculating Similarity Matrix ...")
-        for x in tqdm(self.cosine_scores):
-            x_label = x.argsort()[::-1]
-            x_info = [[l, x[l]] for l in x_label]
-            self.similarity.append(x_info[1:])  # we don't want the first one, as it is authentic pair
-            
+            print(f"Loading {self.similarity_path}...")
+            file_to_read = open(self.similarity_path, "rb")
+            self.similarity = pickle.load(file_to_read)
+            file_to_read.close()
 
     # return the position a verse coordinate is in "my favorite"
     # if there is no such verse, return None
