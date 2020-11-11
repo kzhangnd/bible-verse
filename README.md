@@ -62,9 +62,9 @@ Also, if the user inputs invalid chapter numbers of verse numbers, then they wil
     
     Test Case:
         1.Enter "rod" into the "Enter a Keyword to Search by:" input box.
-        2.Click Search button.
+        2.Click magifying glass button.
         3.Enter "aladdin" "Enter a Keyword to Search by:" input box.
-        4.Click magnifying class button.
+        4.Click magnifying glass button.
 
 
 
