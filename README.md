@@ -38,8 +38,8 @@ Our server currently uses:
     After entering a chapter number, the user can click the "Go To" button to view results in the textbox at the bottom of the page. Results can also be viewed using a scroll bar.
 
     Test Case:
-        1.Enter "1" into the "Enter Chapter Number" input box.
-        2.Click Go To button.
+        1. Enter "1" into the "Enter Chapter Number" input box.
+        2. Click Go To button.
 
 
 
@@ -47,9 +47,9 @@ Our server currently uses:
     By typing in a particular chapter number and verse number into their separate input boxes, the user may view the results of a particular verse   upon clicking the "Go To" button.
    
     Test Case:
-        1.Enter "1" into the "Enter Chapter Number" input box.
-        2.Enter "2" into the "Enter Verse Number" input box.
-        2.Click Go To button.
+        1. Enter "1" into the "Enter Chapter Number" input box.
+        2. Enter "2" into the "Enter Verse Number" input box.
+        3. Click Go To button.
 
 
 
@@ -61,10 +61,10 @@ Also, if the user inputs invalid chapter numbers of verse numbers, then they wil
     The user can type in a particular keyword and upon clicking the "Go To" button, will be able to view all the verses that have that keyword in it. We also have implemented a "fuzzy search" feature. This means that if a user attempts to search for a particular keyword that is not within the book of Psalms, similar results will still pop up.  For example, the word "aladdin" would likely not be in the book of Psalms, but you could search by it and find verses with words that have similar spellings.
     
     Test Case:
-        1.Enter "rod" into the "Enter a Keyword to Search by:" input box.
-        2.Click magifying glass button.
-        3.Enter "aladdin" "Enter a Keyword to Search by:" input box.
-        4.Click magnifying glass button.
+        1. Enter "rod" into the "Enter a Keyword to Search by:" input box.
+        2. Click magifying glass button.
+        3. Enter "aladdin" "Enter a Keyword to Search by:" input box.
+        4. Click magnifying glass button.
 
 
 
@@ -76,8 +76,8 @@ Also, if the user inputs invalid chapter numbers of verse numbers, then they wil
     The user can type in a chapter number and verse number and add a verse to the bottom textbox by clicking the "Add to MyFavorites" button. The results of adding a favorite can be viewed at the bottom of the page. The user can also use a scroll bar to view the results.
     
     Test Case: 
-        1.Click MyFavorites button from home page.
-        2.Type Chapter Number "1" into "Enter Chapter Number" textbox.
+        1. Click MyFavorites button from home page.
+        2. Type Chapter Number "1" into "Enter Chapter Number" textbox.
         3. Type Verse Number "1" into "Enter Verse Number" textbox.
         4. Click add to "My Favorites" button.
 
@@ -88,8 +88,8 @@ Also, if the user inputs invalid chapter numbers of verse numbers, then they wil
     The user can delete a verse from their favorite verse section by typing in the chapter number and verse number and clicking "Delete from "My Favorites".
  
     Test Case: 
-        1.Click MyFavorites button from home page.
-        2.Type Chapter Number "1" into "Enter Chapter Number" textbox.
+        1. Click MyFavorites button from home page.
+        2. Type Chapter Number "1" into "Enter Chapter Number" textbox.
         3. Type Verse Number "1" into "Enter Verse Number" textbox.
         4. Click "Delete from My Favorites" button. Alternatively, the user may click an "X" button beside each verse to delete the verse.
 
@@ -104,15 +104,51 @@ Also, if the user inputs invalid chapter numbers of verse numbers, then they wil
 **Email:**
     The user can send either of us an email by clicking on our netids in the top right hand corner.
 
-
-    
     Test Case: 
        1. Click on ccolon2 in top right hand corner.
-       2.Type in email you want to send and send it.
+       2. Type in email you want to send and send it.
 
 ## Complexity
+We have implemented the follwing features:
+* Show the whole book
+* Search by chapter number
+* Search by chapter number and verse number
+* Search by keyword ([fuzzy-search] included)
+* My Favorite Module (add, delete, clear verses)
+* Recommendation system (using [SentenceTransformers])
 
+All features are supported by the frontend
 
- 
+## Installation
+### Using Anaconda
+If you are using [Anaconda], just run the following command:
+```bash
+conda env create --file conda/environment.yml
+```
+### Manual Installation
+```bash
+pip install CherryPy
+pip install numpy
+pip install scikit-learn
+pip install torch
+pip install tqdm
+pip install fuzzysearch
+pip install sentence-transformers
+```
+## Usage
+* To ensure best performance, download [similarity_matrix.pickle] and [cosine_scores.npy] and put them under ./data
+* If you do not include similarity_matrix.pickle in the project, the code will require the calcualtion of the similarity matrix. The code requires cosine_scores.npy to calulate the similarity matrix **without using GPU**.
+* If you do not include cosine_scores.npy when the calculation of the similarity matrix is needed, the calculation could take **up to a few minutes**.
+* Run the following commands:
+```bash
+cd server
+python3 server.py
+```
+
 [Final Project]: https://docs.google.com/document/d/15YQbpM2lFVR3J5dg1RQ0uKpSqXaUg0zSrnoFMKk1HKc/edit
 [CSE 30332 Programming Paradigms]: https://www3.nd.edu/~skumar5/teaching/2020-fall-pp.html
+[fuzzy-search]: https://fuzzysearch.readthedocs.io/en/latest/
+[SentenceTransformers]: https://www.sbert.net/
+[Anaconda]: https://www.anaconda.com/
+[similarity_matrix.pickle]: https://drive.google.com/file/d/1n8VpTT3Sa5DrqK9B1VaD6SyoHYaO-M_Y/view?usp=sharing
+[cosine_scores.npy]: https://drive.google.com/file/d/1EO9LnRubEy-aS8qkJg8StyhkCEd3i4kM/view?usp=sharing
